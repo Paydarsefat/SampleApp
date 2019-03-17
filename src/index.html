@@ -1,0 +1,60 @@
+<html>
+<head>
+
+</head>
+<body>
+
+<button>Send post message from web</button>
+<div>Post message log</div>
+<textarea readonly></textarea>
+
+<script>
+var log = document.querySelector("textarea");
+var msg = "Mostafa";
+function waitForBridge() {
+
+   //the react native postMessage has only 1 parameter
+   //while the default one has 2, so check the signature
+   //of the function
+
+   if (window.postMessage.length !== 1){
+     setTimeout(waitForBridge, 200);
+   }
+   else {
+     window.postMessage(msg.toString());
+   }
+}
+//window.onload = waitForBridge;
+
+document.querySelector("button").onclick = function() {
+    //console.log("Send post message");
+    waitForBridge();
+    logMessage();
+    alert(" ارسال پیغام از وب 1Post message from web");
+
+    
+//    document.postMessage("Post message from web");
+//window.postMessage("0dddd", "*");
+
+
+}
+
+document.addEventListener("message", function(event) {
+    console.log("Received post message", event);
+    alert("دریافت پیام از موبایل Received post message۱");
+
+    logMessage(event.data);
+}, false);
+
+//function logMessage() {
+// document.querySelector("textarea").value = new Date();
+//}
+
+function logMessage(message) {
+    $("textarea").append((new Date()) + " " + message +"\n");
+}
+
+
+</script>
+</body>
+</html>
