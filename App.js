@@ -9,6 +9,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import Webviewtest from './src/components/Webviewtest';
+import Pushrn from './src/components/Pushrn';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -22,6 +23,7 @@ export default class App extends Component {
     return (
       
         <Webviewtest />
+        //<Pushrn />
             
 
     );
